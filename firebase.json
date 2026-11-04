@@ -1,0 +1,16 @@
+{
+  "hosting": {
+    "public": "public",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "rewrites": [
+      {
+        "source": "/createCheckoutSession",
+        "function": "createCheckoutSession"
+      },
+      {
+        "source": "/stripeWebhook",
+        "function": "stripeWebhook"
+      }
+    ]
+  }
+}

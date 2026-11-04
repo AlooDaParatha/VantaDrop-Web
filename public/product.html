@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>Product — VantaDrop</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<script src="js/app.js"></script>
+<script>
+  window.addEventListener("DOMContentLoaded", () => {
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("id");
+
+    const product = SAMPLE_PRODUCTS.find(p => p.id === id);
+    if (!product) return;
+
+    // Replace content
+    document.querySelector(".product-media img").src = product.image;
+    document.querySelector(".product-media img").alt = product.name;
+    document.querySelector(".product-info h1").textContent = product.name;
+    document.querySelector(".product-info .price").textContent = "₹" + product.price;
+    document.querySelector(".product-info p.muted").textContent = "In stock";
+    document.querySelector(".product-info p:not(.price):not(.muted)").textContent = product.description;
+
+    // Add-to-cart button
+    document.querySelector(".actions .btn").addEventListener("click", () => {
+      addToCart(product.id);
+    });
+  });
+</script>
+<body>
+<header class="site-header">
+    <div class="container header-inner">
+        <a class="brand" href="#">
+            <img src="assets/logo/VantaLogoLight.jpg" class="logo-img">
+            <span class="brand-text">VantaDrop</span>
+        </a>
+        <nav class="site-nav">
+            <a class="nav-link" href="index.html">Catalog</a>
+        </nav>
+    </div>
+</header>
+<main class="container section">
+    <article class="card product-detail">
+        <div class="product-media">
+            <img src="assets/placeholder.svg" alt="Product">
+        </div>
+        <div class="product-info">
+            <h1>Product title</h1>
+            <p class="price">₹999</p>
+            <p class="muted">In stock</p>
+            <p>Product description goes here. Replace with dynamic content when you hook up products.json.</p>
+            <div class="actions"><button class="btn primary">Add to cart</button>
+            </div>
+        </div>
+    </article>
+</main>
+<footer class="site-footer">
+    <div class="container footer-grid">
+        <div>
+            <h4>VantaDrop</h4>
+            <p class="muted small">Demo package</p>
+        </div>
+        <div>
+            <h4>Links</h4>
+        </div>
+        <div>
+            <h4>Contact</h4>
+            <p class="muted small">support@example.com</p>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
